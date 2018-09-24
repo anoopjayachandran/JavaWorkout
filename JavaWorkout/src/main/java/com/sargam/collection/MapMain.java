@@ -5,7 +5,6 @@
  */
 package com.sargam.collection;
 
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -15,21 +14,21 @@ import java.util.Set;
  *
  * @author anoop
  */
-public class MapMain {
+public abstract class MapMain {
 
-    public static void main(String... args) {
-        Map<Integer, String> color = new HashMap<>();
-
-        color.put(1, "Red");
-        color.put(4, "Green");
-        color.put(2, "Blue");
-        color.put(5, "Yelow");
-        color.put(3, "Black");
-        color.put(6, "White");
-        color.put(1, "Pink");
-        color.put(7, "Cyan");
-
-    }
+//    public static void main(String... args) {
+//        Map<Integer, String> color = new HashMap<>();
+//
+//        color.put(1, "Red");
+//        color.put(4, "Green");
+//        color.put(2, "Blue");
+//        color.put(5, "Yelow");
+//        color.put(3, "Black");
+//        color.put(6, "White");
+//        color.put(1, "Pink");
+//        color.put(7, "Cyan");
+//
+//    }
 
     /**
      * Method to iterate map using the key set.
@@ -39,7 +38,7 @@ public class MapMain {
      *
      * @param colors
      */
-    public static void loopKeySet(Map<Integer, String> colors) {
+    public static final void loopKeySet(Map<Integer, String> colors) {
         Set<Integer> keySet = colors.keySet();
         for (Integer key : keySet) {
             System.out.println("Key : " + key + " Value :" + colors.get(key));
@@ -54,7 +53,7 @@ public class MapMain {
      *
      * @param colors
      */
-    public static void loopEntrySet(Map<Integer, String> colors) {
+    public static final void loopEntrySet(Map<Integer, String> colors) {
         Set<Entry<Integer, String>> entries = colors.entrySet();
 
         for (Entry entry : entries) {
@@ -69,8 +68,8 @@ public class MapMain {
      * and object using the remove method of Iterator.
      *
      * @param colors
-     */
-    public static void loopKeySetIterator(Map<Integer, String> colors) {
+     */ 
+    public static final void loopKeySetIterator(Map<Integer, String> colors) {
         Iterator<Integer> keys = colors.keySet().iterator();
         Integer key;
         while (keys.hasNext()) {
@@ -87,7 +86,7 @@ public class MapMain {
      *
      * @param colors
      */
-    public static void loopEntrySetIterator(Map<Integer, String> colors) {
+    public static final void loopEntrySetIterator(Map<Integer, String> colors) {
         Iterator<Entry<Integer, String>> entries = colors.entrySet().iterator();
         Entry entry;
         while (entries.hasNext()) {
@@ -101,7 +100,7 @@ public class MapMain {
      *
      * @param colors
      */
-    public static void loopMapValues(Map<Integer, String> colors) {
+    public static final void loopMapValues(Map<Integer, String> colors) {
         for (String value : colors.values()) {
             System.out.println("Values :" + value);
         }
@@ -109,11 +108,11 @@ public class MapMain {
 
     /**
      * Method that iterates map using the forEach() of Map and
-     * forEachRemaining() of Iterator using Lambda expression.
+     * forEachRemaining() of Iterator action using Lambda expression.
      *
      * @param colors
      */
-    public static void loopMapForEach(Map<Integer, String> colors) {
+    public static final void loopMapForEach(Map<Integer, String> colors) {
 
         colors.forEach((k, v) -> System.out.println("Key : " + k + " Value : " + v));
 
