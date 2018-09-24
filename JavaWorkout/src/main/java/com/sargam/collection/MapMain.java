@@ -29,7 +29,6 @@ public abstract class MapMain {
 //        color.put(7, "Cyan");
 //
 //    }
-
     /**
      * Method to iterate map using the key set.
      *
@@ -68,7 +67,7 @@ public abstract class MapMain {
      * and object using the remove method of Iterator.
      *
      * @param colors
-     */ 
+     */
     public static final void loopKeySetIterator(Map<Integer, String> colors) {
         Iterator<Integer> keys = colors.keySet().iterator();
         Integer key;
@@ -125,5 +124,39 @@ public abstract class MapMain {
         colors.entrySet().iterator().forEachRemaining(entry -> System.out.println("Key :" + entry.getKey() + " Value :" + entry.getValue()));
 
         colors.values().forEach(v -> System.out.println("Value : " + v));
+    }
+
+    /**
+     * Example for ConcurrentModiicationException error.
+     *
+     * @param colors
+     */
+    public static final void loopMapModification(Map<Integer, String> colors) {
+        Set<Entry<Integer, String>> entries = colors.entrySet();
+        for (Entry entry : entries) {
+            if ((int) entry.getKey() == 2) {
+                entries.remove(entry);
+            } else {
+                System.out.println("Key : " + entry.getKey() + " Value : " + entry.getValue());
+            }
+        }
+    }
+
+    /**
+     * Removing an object from map while iterating. Here ConcurrentModificationException doesn't happen.
+     * 
+     * @param colors 
+     */
+    public static final void loopMapRemove(Map<Integer, String> colors) {
+        Iterator<Entry<Integer, String>> entries = colors.entrySet().iterator();
+        Entry entry;
+        while (entries.hasNext()) {
+            entry = entries.next();
+            if ((int) entry.getKey() == 2) {
+                entries.remove();
+            } else {
+                System.out.println("Key : " + entry.getKey() + " Value :" + entry.getValue());
+            }
+        }
     }
 }
